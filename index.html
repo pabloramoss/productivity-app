@@ -5,20 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>tu vieja</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="focus">
-      <div class="minutes">0</div>
-      <div>:</div>
-      <div class="seconds">0</div>
-      <button class="playTimer">Focus</button>
+    <div class="container">
+      <div class="focus">
+        <p class="minutes">0</p>
+        <p>:</p>
+        <p class="seconds">0</p>
+      </div>
+      <div class="sleep">
+        <p class="minutes-break">0</p>
+        <p>:</p>
+        <p class="seconds-break">0</p>
+      </div>
     </div>
-    <div class="sleep">
-      <div class="minutes-break">0</div>
-      <div>:</div>
-      <div class="seconds-break">0</div>
-      <button class="playSleep">Start break</button>
-    </div>
+    <button class="playTimer">Play</button>
+    <button class="reset">Reset</button>
+    <audio id="timeout" src="./sounds/Timeout.mp3"></audio>
     <script src="main.js"></script>
   </body>
 </html>
