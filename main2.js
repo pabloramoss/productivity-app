@@ -14,18 +14,20 @@ let intervalMinutesFocus; let intervalSecondsFocus; let intervalMinutesBreak; le
 // STARTING CONDITIONS START
 function startingConditionsFocus() {
   currentMinutesFocus = 24;
-  currentSecondsFocus = 59; // This value have to be 59'' at the beginning;
+  currentSecondsFocus = 60; // This value have to be 59'' at the beginning;
   minutesFocus.innerHTML = currentMinutesFocus;
   secondsFocus.innerHTML = currentSecondsFocus;
+  minutesFocus.innerHTML = '25';
+  secondsFocus.innerHTML = '00';
 }
 function startingConditionsBreak() {
-  currentMinutesBreak = 4;
-  currentSecondsBreak = 59;
+  currentMinutesBreak = 3;
+  currentSecondsBreak = 2;
   minutesBreak.innerHTML = currentMinutesBreak;
   secondsBreak.innerHTML = currentSecondsBreak;
 }
-// startingConditionsFocus();
-// startingConditionsBreak();
+startingConditionsFocus();
+startingConditionsBreak();
 // STARTING CONDITIONS END
 
 // BREAK SECTION
@@ -50,7 +52,7 @@ function secondsTimerBreak() {
 
       timeoutSound.play();
     }
-    currentSecondsBreak = 60; // Reset the second countdown
+    currentSecondsBreak = 3; // Reset the second countdown
   }
 }
 function minutesTimerBreak() {
@@ -84,12 +86,15 @@ function secondsTimerFocus() {
       intervalMinutesBreak = setInterval(minutesTimerBreak, 60000); // Reemplazar luego por 60000
       intervalSecondsBreak = setInterval(secondsTimerBreak, 1000);
     }
-    currentSecondsFocus = 60; // Reset the second countdown
+    currentSecondsFocus = 3; // Reset the second countdown
   }
 }
 
 // This function execute it every 60'', substract 1 minute and print it
 function minutesTimerFocus() {
+  if (minutesFocu == 25) {
+    minutesFocus.innerHTML = 24;
+  }
   currentMinutesFocus -= 1;
   minutesFocus.innerHTML = currentMinutesFocus;
 }
@@ -97,7 +102,6 @@ function minutesTimerFocus() {
 // Start focus timer
 // setInterval execute a function every certain interval
 playFocus.addEventListener('click', () => {
-  startingConditionsFocus();
   document.querySelector('.focus').classList.add('active');
   intervalMinutesFocus = setInterval(minutesTimerFocus, 60000); // Reemplazar luego por 60000
   intervalSecondsFocus = setInterval(secondsTimerFocus, 1000);
@@ -107,10 +111,6 @@ playFocus.addEventListener('click', () => {
 reset.addEventListener('click', () => {
   startingConditionsFocus();
   startingConditionsBreak();
-  minutesFocus.innerHTML = '25';
-  secondsFocus.innerHTML = '00';
-  minutesBreak.innerHTML = '5';
-  secondsBreak.innerHTML = '00';
   clearInterval(intervalSecondsBreak);
   clearInterval(intervalMinutesBreak);
   clearInterval(intervalSecondsFocus);
@@ -118,3 +118,5 @@ reset.addEventListener('click', () => {
   document.querySelector('.sleep').classList.remove('active');
   document.querySelector('.focus').classList.remove('active');
 });
+
+console.log('hola');
